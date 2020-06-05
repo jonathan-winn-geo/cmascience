@@ -27,7 +27,10 @@ jobs:
         cd bin
         chmod +x build-sphinx-docs.sh
         ./build-sphinx-docs.sh
+        echo $PWD
+        echo "Documentation built"
         cd  ..
+        echo $PWD
         cd docs/build/html
         git status
         echo "testing"
