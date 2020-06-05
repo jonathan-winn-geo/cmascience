@@ -32,8 +32,13 @@ jobs:
       run: |
         source /usr/share/miniconda/etc/profile.d/conda.sh
         conda activate cmascience-env
-        git config user.name "$GITHUB_ACTOR"
-        git config user.email "${GITHUB_ACTOR}@bots.github.com"
+        # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        #git config user.name "$GITHUB_ACTOR"
+        #git config user.email "${GITHUB_ACTOR}@bots.github.com"
+        #git config user.email "${{ github.actor }}@users.noreply.github.com"
+        #git config user.name "${{ github.actor }}"
         cd bin
         chmod +x build-sphinx-docs.sh
         ./build-sphinx-docs.sh
