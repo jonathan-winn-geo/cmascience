@@ -1,6 +1,10 @@
 name: gh-pages
 
-on: [push]
+# Ensure pages only re-built after pushes to master branch not feature branches
+on:
+  push:
+    branches:    
+      - master
 
 jobs:
   build:
@@ -23,7 +27,18 @@ jobs:
         cd bin
         chmod +x build-sphinx-docs.sh
         ./build-sphinx-docs.sh
+        cd  ..
+        cd docs/build/html
         git status
         echo "testing"
+        echo $PWD
+        git stash
+        git checkout gh-pages
+        git stash pop
+        git stash list
+        git add .
+        git status
+        # git commit -m "Update documentation" -a || true
+         
       env:
         REMOTE_TESTS: True
