@@ -1,0 +1,22 @@
+cmascience.io package
+=====================
+
+Submodules
+----------
+
+cmascience.io.read\_inputs module
+---------------------------------
+
+.. automodule:: cmascience.io.read_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: cmascience.io
+   :members:
+   :undoc-members:
+   :show-inheritance:
