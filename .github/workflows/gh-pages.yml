@@ -36,6 +36,10 @@ jobs:
         # setup the username and email.
         git config user.name "$GITHUB_ACTOR"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        # remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+        # git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+        # git push github HEAD:${GITHUB_REF}
+        repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         cd bin
         chmod +x build-sphinx-docs.sh
         ./build-sphinx-docs.sh
@@ -57,7 +61,10 @@ jobs:
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
+        git remote set-url origin "$repo_uri" # includes access token
         git push origin gh-pages
+      # with:
+        #github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
         REMOTE_TESTS: True
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
