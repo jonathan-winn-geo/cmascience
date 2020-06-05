@@ -1,3 +1,11 @@
+# Content inspired from these sources
+# https://github.com/ammaraskar/sphinx-action-test/blob/master/.github/workflows/default.yml
+# https://www.innoq.com/en/blog/github-actions-automation/
+# https://github.com/marketplace/actions/publish-to-git
+# https://github.com/seanmiddleditch/gha-publish-to-git/blob/master/entrypoint.sh
+# https://github.com/JacksonMaxfield/github-pages-deploy-action-python/blob/master/entrypoint.sh
+
+
 name: gh-pages
 
 # Ensure pages only re-built after pushes to master branch not feature branches
@@ -24,6 +32,8 @@ jobs:
       run: |
         source /usr/share/miniconda/etc/profile.d/conda.sh
         conda activate cmascience-env
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "${GITHUB_ACTOR}@bots.github.com"
         cd bin
         chmod +x build-sphinx-docs.sh
         ./build-sphinx-docs.sh
