@@ -13,7 +13,6 @@ on:
   push:
     branches:    
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -59,7 +58,7 @@ jobs:
         git status
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-pages"
+        echo "Push changes to gh-pages branch"
         git push origin gh-pages
-         
       env:
         REMOTE_TESTS: True
