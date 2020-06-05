@@ -43,6 +43,8 @@ jobs:
         git add .
         git status
         # git commit -m "Update documentation" -a || true
+        git commit -m "Update documentation on gh-pages"
+        git push origin gh-pages
          
       env:
         REMOTE_TESTS: True
