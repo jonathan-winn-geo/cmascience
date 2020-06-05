@@ -23,5 +23,7 @@ jobs:
         cd bin
         chmod +x build-sphinx-docs.sh
         ./build-sphinx-docs.sh
+        git status
+        echo "testing"
       env:
         REMOTE_TESTS: True
