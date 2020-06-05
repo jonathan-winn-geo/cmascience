@@ -31,7 +31,8 @@ jobs:
         echo "Documentation built"
         cd  ..
         echo $PWD
-        cd docs/build/html
+        cd docs/build
+        echo $PWD
         git status
         echo "testing"
         echo $PWD
