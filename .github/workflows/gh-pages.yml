@@ -37,7 +37,7 @@ jobs:
         echo "testing"
         echo $PWD
         #git stash
-        git checkout gh-pages
+        git checkout -f gh-pages
         #git stash pop
         #git stash list
         git add .
