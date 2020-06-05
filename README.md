@@ -7,8 +7,8 @@
 ---
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[](https://github.com/jonathan-winn-geo/cmascience/workflows/docs/badge.svg)
-[](https://github.com/jonathan-winn-geo/cmascience/workflows/unit-tests/badge.svg)
+![](https://github.com/jonathan-winn-geo/cmascience/workflows/docs/badge.svg)
+![](https://github.com/jonathan-winn-geo/cmascience/workflows/unit-tests/badge.svg)
 
 ---
 
