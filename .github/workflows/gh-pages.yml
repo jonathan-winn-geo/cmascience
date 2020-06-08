@@ -62,12 +62,12 @@ jobs:
         git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
-        # git push origin gh-pages
+        git push origin gh-documentation
         # git subtree push --prefix docs/build origin gh-pages
         cd ../..
         echo $PWD
-        git pull origin gh-documentation
-        git subtree push --prefix docs/build origin gh-documentation   
+        #git pull origin gh-documentation
+        #git subtree push --prefix docs/build origin gh-documentation   
       # with:
         #github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
