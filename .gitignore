@@ -1,2 +1,5 @@
-# Sphinx source files, rich text
+# Sphinx documentation, source directory
+docs/source
+
+# Rich text files
 *.rst
