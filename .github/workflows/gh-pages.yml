@@ -53,7 +53,7 @@ jobs:
         echo "testing"
         echo $PWD
         git stash
-        git checkout -f gh-pages
+        git checkout -f gh-documentation
         git stash pop
         git stash list
         git add .
@@ -64,7 +64,7 @@ jobs:
         git remote set-url origin "$repo_uri" # includes access token
         # git push origin gh-pages
         # git subtree push --prefix docs/build origin gh-pages
-        git subtree push --prefix=/ origin gh-pages
+        git subtree push --prefix=/ origin gh-documentation
       # with:
         #github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
