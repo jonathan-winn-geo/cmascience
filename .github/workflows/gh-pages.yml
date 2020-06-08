@@ -1,0 +1,72 @@
+# Content inspired from these sources
+# https://github.com/ammaraskar/sphinx-action-test/blob/master/.github/workflows/default.yml
+# https://www.innoq.com/en/blog/github-actions-automation/
+# https://github.com/marketplace/actions/publish-to-git
+# https://github.com/seanmiddleditch/gha-publish-to-git/blob/master/entrypoint.sh
+# https://github.com/JacksonMaxfield/github-pages-deploy-action-python/blob/master/entrypoint.sh
+
+
+name: gh-pages
+
+# Ensure pages only re-built after pushes to master branch not feature branches
+on:
+  push:
+    branches:    
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      #with:
+        #repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install dependencies
+      run: |
+        conda update conda
+        conda env create -f bin/environment.yml
+    - name: Install cmascience
+      run: |
+        source /usr/share/miniconda/etc/profile.d/conda.sh
+        conda activate cmascience-env
+        python setup.py install
+    - name: Test Sphinx docs build
+      run: |
+        source /usr/share/miniconda/etc/profile.d/conda.sh
+        conda activate cmascience-env
+        # setup the username and email.
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        # remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+        # git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+        # git push github HEAD:${GITHUB_REF}
+        repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        cd bin
+        chmod +x build-sphinx-docs.sh
+        ./build-sphinx-docs.sh
+        echo $PWD
+        echo "Documentation built"
+        cd  ..
+        echo $PWD
+        cd docs/build
+        echo $PWD
+        git status
+        echo "testing"
+        echo $PWD
+        git stash
+        git checkout -f gh-pages
+        git stash pop
+        git stash list
+        git add .
+        git status
+        # git commit -m "Update documentation" -a || true
+        git commit -m "Update documentation on gh-pages"
+        echo "Push changes to gh-pages branch"
+        git remote set-url origin "$repo_uri" # includes access token
+        # git push origin gh-pages
+        # git subtree push --prefix docs/build origin gh-pages
+        git subtree push --prefix=/ origin gh-pages
+      # with:
+        #github_token: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        REMOTE_TESTS: True
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
