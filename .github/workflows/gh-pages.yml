@@ -38,8 +38,9 @@ jobs:
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
         repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         
-        git checkout gh-docs
-        git rebase origin/master
+        #git checkout gh-docs
+        #git pull 
+        # git rebase origin/master
         
         cd bin
         chmod +x build-sphinx-docs.sh
@@ -60,6 +61,9 @@ jobs:
         git add *.js
         #git add . 
         git status
+        echo "here >>>>"
+        git checkout -f gh-docs
+        
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
