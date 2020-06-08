@@ -63,7 +63,8 @@ jobs:
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
         # git push origin gh-pages
-        git subtree push --prefix docs/build origin gh-pages
+        # git subtree push --prefix docs/build origin gh-pages
+        git subtree push --prefix=/ origin gh-pages
       # with:
         #github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
