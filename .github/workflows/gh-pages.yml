@@ -36,12 +36,14 @@ jobs:
         # setup the username and email.
         git config user.name "$GITHUB_ACTOR"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        # remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
-        # git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-        # git push github HEAD:${GITHUB_REF}
         repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        
+        git checkout gh-docs
+        git rebase origin/master
+        
         cd bin
         chmod +x build-sphinx-docs.sh
+        # Build the html documentation with sphinx
         ./build-sphinx-docs.sh
         echo $PWD
         echo "Documentation built"
@@ -51,14 +53,6 @@ jobs:
         echo $PWD
         git status
         echo "testing"
-        echo $PWD
-        #git stash
-        git checkout -f gh-docs
-        #git stash pop
-        #git stash list
-        # git add *.html
-        #git mv * ../..
-        #cd ../..
         echo $PWD
         git add _static
         git add *.html
@@ -70,15 +64,11 @@ jobs:
         git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
-        #git push origin gh-documentation
+        git push origin gh-docs
         cd ../..
         echo $PWD
-        git pull
-        git subtree push --prefix docs/build origin gh-docs
+        #git subtree push --prefix docs/build origin gh-docs
         #git pull origin gh-documentation
-        #git subtree push --prefix docs/build origin gh-documentation   
-      # with:
-        #github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
         REMOTE_TESTS: True
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
