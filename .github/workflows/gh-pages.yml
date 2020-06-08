@@ -37,7 +37,8 @@ jobs:
         # Setup the username and email.
         git config user.name "$GITHUB_ACTOR"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        
+        git config pull.rebase true   # rebase
+       
         # 
         repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         
@@ -71,7 +72,7 @@ jobs:
         git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
-        git push origin gh-docs
+        git push --force-with-lease origin gh-docs
         #cd ../..
         #echo $PWD
         #git subtree push --prefix docs/build origin gh-docs
