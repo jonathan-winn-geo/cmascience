@@ -56,7 +56,11 @@ jobs:
         git checkout -f gh-documentation
         #git stash pop
         #git stash list
-        git add . *.html
+        # git add *.html
+        mv * ../..
+        cd ../..
+        echo $PWD
+        git add . 
         git status
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-pages"
@@ -64,7 +68,7 @@ jobs:
         git remote set-url origin "$repo_uri" # includes access token
         git push origin gh-documentation
         # git subtree push --prefix docs/build origin gh-pages
-        cd ../..
+        #cd ../..
         echo $PWD
         #git pull origin gh-documentation
         #git subtree push --prefix docs/build origin gh-documentation   
