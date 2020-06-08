@@ -66,7 +66,7 @@ jobs:
         # git subtree push --prefix docs/build origin gh-pages
         cd ../..
         echo $PWD
-        git subtree push --prefix=/ origin gh-documentation   
+        git subtree push --prefix docs/build origin gh-documentation   
       # with:
         #github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
