@@ -71,9 +71,9 @@ jobs:
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
         #git push origin gh-documentation
-        git subtree push --prefix docs/build origin gh-docs
         cd ../..
         echo $PWD
+        git subtree push --prefix docs/build origin gh-docs
         #git pull origin gh-documentation
         #git subtree push --prefix docs/build origin gh-documentation   
       # with:
