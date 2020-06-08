@@ -53,12 +53,12 @@ jobs:
         echo "testing"
         echo $PWD
         #git stash
-        git checkout -f gh-documentation
+        git checkout -f gh-docs
         #git stash pop
         #git stash list
         # git add *.html
-        git mv * ../..
-        cd ../..
+        #git mv * ../..
+        #cd ../..
         echo $PWD
         git add _static
         git add *.html
@@ -70,8 +70,8 @@ jobs:
         git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
-        git push origin gh-documentation
-        # git subtree push --prefix docs/build origin gh-pages
+        #git push origin gh-documentation
+        git subtree push --prefix docs/build origin gh-docs
         #cd ../..
         echo $PWD
         #git pull origin gh-documentation
