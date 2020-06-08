@@ -29,7 +29,7 @@ jobs:
         source /usr/share/miniconda/etc/profile.d/conda.sh
         conda activate cmascience-env
         python setup.py install
-    - name: Test Sphinx docs build
+    - name: Build and publish Sphinx documentation
       run: |
         source /usr/share/miniconda/etc/profile.d/conda.sh
         conda activate cmascience-env
@@ -41,11 +41,7 @@ jobs:
        
         # 
         repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        
-        git checkout gh-docs
-        git pull origin gh-docs 
-        git rebase origin/master
-        
+                
         cd bin
         chmod +x build-sphinx-docs.sh
         # Build the html documentation with sphinx
@@ -60,23 +56,29 @@ jobs:
         git status
         echo "testing"
         echo $PWD
+        
+        git checkout gh-docs-pages
+        #git pull origin gh-docs-pages 
+        
         git add -f _static
         git add -f *.html
         git add -f *.inv
         git add -f *.js
-        #git add . 
+
         git status
         echo "here >>>>"
         
         # git commit -m "Update documentation" -a || true
-        git commit -m "Update documentation on gh-pages"
-        echo "Push changes to gh-pages branch"
+        git commit -m "Update documentation on gh-docs-pages"
+        echo "Push changes to gh-docs-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
-        git push --force-with-lease origin gh-docs
+        
+        git push --force-with-lease origin gh-docs-pages
+
         #cd ../..
         #echo $PWD
         #git subtree push --prefix docs/build origin gh-docs
-        #git pull origin gh-documentation
+
       env:
         REMOTE_TESTS: True
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
