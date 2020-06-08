@@ -57,7 +57,7 @@ jobs:
         #git stash pop
         #git stash list
         # git add *.html
-        mv * ../..
+        git mv * ../..
         cd ../..
         echo $PWD
         git add _static
