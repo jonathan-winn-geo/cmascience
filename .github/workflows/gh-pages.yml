@@ -60,7 +60,11 @@ jobs:
         mv * ../..
         cd ../..
         echo $PWD
-        git add . 
+        git add _static
+        git add *.html
+        git add *.inv
+        git add *.js
+        #git add . 
         git status
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-pages"
