@@ -61,15 +61,17 @@ jobs:
         #git pull origin gh-docs-pages 
         
         git add -f _static
+        git add -f _sources
         git add -f *.html
         git add -f *.inv
         git add -f *.js
+        git add .
 
         git status
         echo "here >>>>"
         
         # git commit -m "Update documentation" -a || true
-        git commit -m "Update documentation on gh-docs-pages"
+        git commit -m "Update documentation on gh-pages"
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
         
