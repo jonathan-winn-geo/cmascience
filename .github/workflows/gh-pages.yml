@@ -40,8 +40,9 @@ jobs:
         git config pull.rebase true   # rebase
        
         # 
-        repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-                
+        #repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        repo_uri="https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+       
         cd bin
         chmod +x build-sphinx-docs.sh
         # Build the html documentation with sphinx
@@ -77,5 +78,5 @@ jobs:
         
         git push --force-with-lease origin gh-pages
       env:
-        REMOTE_TESTS: True
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
