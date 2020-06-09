@@ -11,7 +11,7 @@ echo "$INPUT_DIR"
 OUTPUT_DIR=$CODE_DIR/docs/build
 echo "$OUTPUT_DIR"
 
-# Generate source files from current range of installed HadCRUT package / subpackages
+# Generate source files from current range of installed packages / subpackages
 sphinx-apidoc -f -o $INPUT_DIR $CODE_DIR/cmascience
 
 # Build sphinx docs and make html
