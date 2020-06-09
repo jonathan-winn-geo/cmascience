@@ -1,7 +1,0 @@
-cmascience
-==========
-
-.. toctree::
-   :maxdepth: 4
-
-   cmascience
