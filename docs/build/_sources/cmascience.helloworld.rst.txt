@@ -1,0 +1,22 @@
+cmascience.helloworld package
+=============================
+
+Submodules
+----------
+
+cmascience.helloworld.hello\_world module
+-----------------------------------------
+
+.. automodule:: cmascience.helloworld.hello_world
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: cmascience.helloworld
+   :members:
+   :undoc-members:
+   :show-inheritance:
