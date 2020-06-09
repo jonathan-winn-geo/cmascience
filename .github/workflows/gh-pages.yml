@@ -58,7 +58,8 @@ jobs:
         echo "testing"
         echo $PWD
         
-        git checkout -f gh-pages
+        git checkout --theirs gh-pages
+        #git checkout -f gh-pages
         #git pull origin gh-docs-pages 
         
         git add -f _static
