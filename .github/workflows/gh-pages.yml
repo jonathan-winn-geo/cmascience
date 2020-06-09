@@ -48,8 +48,8 @@ jobs:
         git checkout gh-pages
         # git rebase origin/master
         
-        git checkout master/bin
-        git checkout master/docs
+        git checkout master bin/
+        git checkout master docs/
        
         cd bin
         chmod +x build-sphinx-docs.sh
