@@ -77,6 +77,9 @@ jobs:
         git add -f *.html
         git add -f *.inv
         git add -f *.js
+        
+        cd ../.. 
+        
         git add docs/
         # git add .
 
