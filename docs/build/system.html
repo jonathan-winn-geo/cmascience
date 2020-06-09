@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1: System context architecture &#8212; cmascience 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="cmascience.io package" href="cmascience.io.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="level-1-system-context-architecture">
+<h1>Level 1: System context architecture<a class="headerlink" href="#level-1-system-context-architecture" title="Permalink to this headline">¶</a></h1>
+<p>A System Context diagram provides a starting point, showing how the software system in scope fits into the world around it.</p>
+<p>This is a high level abstraction detailing the system, the users of the system, the other systems that it interacts with.</p>
+<p>This also serves as a non-technical summary</p>
+<div class="section" id="cmascience">
+<h2>cmascience<a class="headerlink" href="#cmascience" title="Permalink to this headline">¶</a></h2>
+<script>mermaid.initialize({startOnLoad:true});</script><div class="mermaid">
+            graph TB
+   1((START)) --&gt; 2(Verify available input data)
+   1 --&gt; 3(Import data)
+   2 --&gt; 4(Build grids)
+   4 --&gt; 5(other step)
+   5 --&gt; 6(Archive)
+   2 --&gt; 8(other)
+   13&gt;Test outputs] --&gt; 9
+   9 --&gt; 10(Build visualisation)
+   10 --&gt; 11(Archive)
+   11 --&gt; 7
+   6 --&gt; 7(Build website)
+   7 --&gt; 12((END))
+        </div></div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">cmascience</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">cmascience</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Level 1: System context architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cmascience">cmascience</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="cmascience.io.html" title="previous chapter">cmascience.io package</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, jonathan winn.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/system.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
