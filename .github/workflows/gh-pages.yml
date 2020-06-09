@@ -29,7 +29,7 @@ jobs:
         source /usr/share/miniconda/etc/profile.d/conda.sh
         conda activate cmascience-env
         python setup.py install
-    - name: Build and publish Sphinx documentation
+    - name: Build and publish Sphinx documentation to gh-pages
       run: |
         source /usr/share/miniconda/etc/profile.d/conda.sh
         conda activate cmascience-env
@@ -57,7 +57,7 @@ jobs:
         echo "testing"
         echo $PWD
         
-        git checkout -f gh-docs-pages
+        git checkout -f gh-pages
         #git pull origin gh-docs-pages 
         
         git add -f _static
@@ -70,15 +70,10 @@ jobs:
         
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-docs-pages"
-        echo "Push changes to gh-docs-pages branch"
+        echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
         
-        git push --force-with-lease origin gh-docs-pages
-
-        #cd ../..
-        #echo $PWD
-        #git subtree push --prefix docs/build origin gh-docs
-
+        git push --force-with-lease origin gh-pages
       env:
         REMOTE_TESTS: True
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
