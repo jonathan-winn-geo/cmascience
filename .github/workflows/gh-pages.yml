@@ -43,6 +43,9 @@ jobs:
         #repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         repo_uri="https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
        
+        git checkout gh-pages
+        git rebase origin/master
+       
         cd bin
         chmod +x build-sphinx-docs.sh
         # Build the html documentation with sphinx
@@ -58,7 +61,7 @@ jobs:
         echo "testing"
         echo $PWD
         
-        git checkout --theirs gh-pages
+        #git checkout --theirs gh-pages
         #git checkout -f gh-pages
         #git pull origin gh-docs-pages 
         
@@ -72,7 +75,7 @@ jobs:
         git status
         echo "here >>>>"
         
-        git commit -m "Update documentation" -a || true
+        git commit -m "Update documentation on gh-pages" -a || true
         #git commit -m "Update documentation on gh-pages"
         #if [ $? -ne 0 ]; then
         #   echo "nothing to commit"
