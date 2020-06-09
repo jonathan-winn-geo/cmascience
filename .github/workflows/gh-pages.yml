@@ -50,8 +50,8 @@ jobs:
         # Clean up the working repo
         git clean -dfX
         
-        git checkout origin/master bin/
-        git checkout origin/master docs/
+        git checkout -f origin/master bin/
+        git checkout -f origin/master docs/
        
         cd bin
         chmod +x build-sphinx-docs.sh
@@ -77,7 +77,8 @@ jobs:
         git add -f *.html
         git add -f *.inv
         git add -f *.js
-        git add .
+        git add docs/
+        # git add .
 
         git status
         echo "here >>>>"
