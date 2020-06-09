@@ -7,7 +7,15 @@ Welcome to cmascience documentation!
    :caption: Contents:
 
    modules
-   system
+
+
+System architecture
+===================
+
+.. toctree::
+   :maxdepth: 2
+
+   system.rst
 
 
 
