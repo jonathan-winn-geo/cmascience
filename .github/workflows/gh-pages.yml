@@ -73,6 +73,11 @@ jobs:
         
         # git commit -m "Update documentation" -a || true
         git commit -m "Update documentation on gh-pages"
+        if [ $? -ne 0 ]; then
+           echo "nothing to commit"
+           exit 0
+        fi
+        
         echo "Push changes to gh-pages branch"
         git remote set-url origin "$repo_uri" # includes access token
         
