@@ -19,3 +19,5 @@ dependencies:
  - xarray
  - jupyter
  - pip
+ - pip:
+    - sphinxcontrib-mermaid
