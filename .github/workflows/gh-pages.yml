@@ -43,8 +43,13 @@ jobs:
         #repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         repo_uri="https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
        
+        git branch -a
+        echo "-------------------------------------"
         git checkout gh-pages
-        git rebase origin/master
+        # git rebase origin/master
+        
+        git checkout master/bin
+        git checkout master/docs
        
         cd bin
         chmod +x build-sphinx-docs.sh
