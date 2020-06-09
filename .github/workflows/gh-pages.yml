@@ -45,11 +45,13 @@ jobs:
        
         git branch -a
         echo "-------------------------------------"
-        git checkout gh-pages
+        git checkout -f gh-pages
         # git rebase origin/master
+        # Clean up the working repo
+        git clean -dfX
         
-        git checkout master bin/
-        git checkout master docs/
+        git checkout origin/master bin/
+        git checkout origin/master docs/
        
         cd bin
         chmod +x build-sphinx-docs.sh
