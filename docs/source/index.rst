@@ -9,6 +9,15 @@ Welcome to cmascience documentation!
    modules
 
 
+System architecture
+===================
+
+.. toctree::
+   :maxdepth: 2
+
+   system.rst
+
+
 
 Indices and tables
 ==================
