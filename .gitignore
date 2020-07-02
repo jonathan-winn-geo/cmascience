@@ -106,3 +106,6 @@ logs/*
 
 # Auto-generated files
 branch_env.yaml
+
+# Local output data
+data/outputs/
