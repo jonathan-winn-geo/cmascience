@@ -18,6 +18,8 @@ dependencies:
  - geoviews
  - xarray
  - jupyter
+ - cfchecker
+ - compliance-checker
  - pip
  - pip:
     - sphinxcontrib-mermaid
