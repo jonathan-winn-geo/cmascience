@@ -8,17 +8,19 @@ from pathlib import Path
 CMA = Path(__file__).resolve().parents[1]
 CMASCIENCE = Path(__file__).resolve().parents[2]
 
+
 def print_input_files():
     """ Add """
     # TODO docstring
     print(CMA)
     print(CMASCIENCE)
-    data = CMASCIENCE / 'data' / 'reference' / 'tos_O1_2001-2002.nc'
+    data = CMASCIENCE / "data" / "reference" / "tos_O1_2001-2002.nc"
     print(data)
     cube = iris.load(str(data))
     cube2 = iris.load_cube(str(data))
     print(cube)
     print(cube2)
-    #infile =
+    # infile =
+
 
 print_input_files()

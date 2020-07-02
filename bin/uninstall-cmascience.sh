@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Uninstall hadcrut package
+# Uninstall package
 # Deletes local install files and directories
 
 COD_DIR="$(dirname "$PWD")"
