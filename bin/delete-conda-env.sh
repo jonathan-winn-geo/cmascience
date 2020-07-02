@@ -3,6 +3,8 @@
 # Script to delete current conda environment
 # Used to re-set the system , e.g. prior to a new full installation
 
+source $(conda info --base)/etc/profile.d/conda.sh
+
 conda deactivate
 
 while true; do
@@ -16,6 +18,3 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-echo ""
-echo "Conda environment removed"
-echo ""
