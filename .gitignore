@@ -107,5 +107,8 @@ logs/*
 # Auto-generated files
 branch_env.yaml
 
-# Local output data
+# Ignore local output data
 data/outputs/
+
+# Ignore downloaded input data
+data/inputs/

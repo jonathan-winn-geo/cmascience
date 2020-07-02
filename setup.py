@@ -19,6 +19,11 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
-    # include_package_data = True,
+    include_package_data = True,
+    package_data = {
+        # Ensure config.ini file is available within installed package
+    # If any package contains *.ini files, include them
+        '': ['*.ini']
+    }
     # entry_points
 )
