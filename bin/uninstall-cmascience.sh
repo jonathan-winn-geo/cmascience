@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Uninstall hadcrut package
+# Uninstall package
 # Deletes local install files and directories
 
-COD_DIR="$(dirname "$PWD")"
+CODE_DIR="$(dirname "$PWD")"
 echo "$CODE_DIR"
 pip uninstall -y cmascience
 echo "Removing .egg-info directory"
