@@ -8,8 +8,9 @@ DATA=$CODE_DIR/data/reference
 
 TEST_FILE="tos_O1_2001-2002.nc"
 TEST_FILE_2="sresa1b_ncar_ccsm3-example.nc"
+TEST_FILE_3="HadSST.4.0.0.0_median.nc"
 
-compliance-checker --test=cf --verbose $DATA/$TEST_FILE $DATA/$TEST_FILE_2
+compliance-checker --test=cf --verbose $DATA/$TEST_FILE $DATA/$TEST_FILE_2 $DATA/$TEST_FILE_3
 
 # compliance-checker --test=cf:1.7 $DATA/$TEST_FILE
 
@@ -20,4 +21,4 @@ echo " ------------"
 echo " ------------"
 echo " ------------"
 
-cfchecks $DATA/$TEST_FILE $DATA/$TEST_FILE_2
+cfchecks $DATA/$TEST_FILE $DATA/$TEST_FILE $DATA/$TEST_FILE_2  $DATA/$TEST_FILE_3

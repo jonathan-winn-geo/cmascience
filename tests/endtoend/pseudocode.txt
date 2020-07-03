@@ -1,0 +1,16 @@
+Full end to end test will cover the following
+
+
+- assumes a fresh code install from the repo, in a location with no existing data
+- (verify all unit tests run first?)
+- checks accessibility of download locations
+- downloads input data
+- verifies input data - validation - checksum
+- verifies input data - simple range, bounds, data checks
+- runs the analysis (inc adds / updates metadata)
+- check data outputs - values, ranges, etc
+- checks data outputs - metadata content
+- checks data outputs - CF standards
+
+ # TBC / TODO
+ - consider if this includes plots and diagnostics
