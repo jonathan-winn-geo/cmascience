@@ -15,5 +15,6 @@ def return_filename(url):
                 fname = url.split("/")[-1]
 
             print(fname)
+            return fname
     except RequestException as e:
         print(e)

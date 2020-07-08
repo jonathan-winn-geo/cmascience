@@ -12,5 +12,6 @@ def read_input_source_ini():
     config.read(configfile)
     coasts = config.get("INPUTS", "COASTS")
     elevation = config.get("INPUTS", "ELEVATION")
+    sst = config.get("INPUTS", "SST")
 
-    return coasts, elevation
+    return coasts, elevation, sst
