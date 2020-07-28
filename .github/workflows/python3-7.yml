@@ -23,7 +23,8 @@ jobs:
       with:
         path: |
           ~/conda_pkgs_dir
-          ~/.cache/pip 
+          ~/.cache/pip
+          /usr/share/miniconda
         #key: ${{ runner.os }}-${{ hashFiles('bin/environment.yml') }}
         key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('etc/example-environment.yml') }} 
         restore-keys: |
