@@ -1,13 +1,22 @@
 name: cmascience
 
-#on: [push]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install dependencies
+      id: cache-conda
+      uses: actions/cache@v2
+      with:
+        path: | 
+          path/to/dependencies
+          some/other/dependencies 
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+    - name: build-conda  
+      if: steps.cache-conda.outputs.cache-hit != 'true'
       run: |
         conda update conda
         conda env create -f bin/environment.yml
