@@ -1,3 +1,9 @@
+# resources from
+# https://github.com/marketplace/actions/setup-miniconda
+# https://github.com/marketplace/actions/setup-miniconda
+# 
+# https://github.com/actions/starter-workflows/issues/44
+
 name: cmascience
 
 on: [push]
@@ -6,20 +12,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: checkout master branch 
+      uses: actions/checkout@v2
     - name: Install dependencies
       id: cache-conda
       uses: actions/cache@v2
+      env:
+        # Increase this value to reset cache if etc/example-environment.yml has not changed
+        CACHE_NUMBER: 0
       with:
-        path: | 
-          path/to/dependencies
-          some/other/dependencies 
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        path: |
+          ~/conda_pkgs_dir
+          ~/.cache/pip 
+        #key: ${{ runner.os }}-${{ hashFiles('bin/environment.yml') }}
+        key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('etc/example-environment.yml') }} 
+        restore-keys: |
+          ${{ runner.os }}-conda-
+
     - name: build-conda  
       if: steps.cache-conda.outputs.cache-hit != 'true'
       run: |
         conda update conda
+        conda config --show
         conda env create -f bin/environment.yml
+        conda config --show
     - name: conda check
       run: |
         source /usr/share/miniconda/etc/profile.d/conda.sh
