@@ -1,3 +1,6 @@
+# resources from
+# https://github.com/asarkar/build-time-tracker/blob/master/.github/workflows/publish.yml
+
 name: unit-tests
 
 on: [push]
@@ -8,6 +11,21 @@ jobs:
     steps:
     - name: checkout master branch 
       uses: actions/checkout@v2
+    - name: Check CI status
+      run: >
+        output=$(curl -sSL -X GET -G -H 
+        "Accept: application/vnd.github.v3+json" 
+        -d "branch=${{ env.GITHUB_REF_SLUG }}" 
+        -d "event=push" 
+        https://api.github.com/repos/${{ github.repository }}/actions/workflows/${{ github.event.inputs.ci }}/runs | jq -r '.workflow_runs[0] | "\(.conclusion)"')
+        echo "::set-output name=status::$output"
+      id: check
+
+    - name: Abort if CI not successful
+      if: steps.check.outputs.status != 'success'
+      run: |
+        echo ${{ steps.check.outputs.status }}
+        exit 1   
     - name: Cache conda
       uses: actions/cache@v1
       env:
