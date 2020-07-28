@@ -5,24 +5,24 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-     steps:
+    steps:
     - name: checkout master branch 
       uses: actions/checkout@v2
-    - name: Install dependencies
-      id: cache-conda
-      uses: actions/cache@v2
+    - name: Cache conda
+      uses: actions/cache@v1
       env:
         # Increase this value to reset cache if etc/example-environment.yml has not changed
-        CACHE_NUMBER: 1
+        CACHE_NUMBER: 0
       with:
-        path: |
-          ~/conda_pkgs_dir
-          ~/.cache/pip
-          /usr/share/miniconda
-        #key: ${{ runner.os }}-${{ hashFiles('bin/environment.yml') }}
-        key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('etc/example-environment.yml') }} 
-        restore-keys: |
-          ${{ runner.os }}-conda-
+        path: ~/conda_pkgs_dir
+        key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('bin/environment.yml') }}
+    - uses: goanpeca/setup-miniconda@v1
+      with:
+        activate-environment: anaconda-client-env
+        python-version: 3.7
+        channel-priority: strict
+        environment-file: bin/environment.yml
+        use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!  
     
     - name: conda check
       run: |
