@@ -35,7 +35,8 @@ jobs:
       run: |
         conda update conda
         conda config --show
-        conda env create -f bin/environment.yml
+        # added force flag to prevent errors when env already exists 
+        conda env create -f bin/environment.yml --force
         conda config --show
     - name: conda check
       run: |
