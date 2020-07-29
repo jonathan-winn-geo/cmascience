@@ -40,7 +40,7 @@ jobs:
     # invoke a repository_dispatch webhook event by calling the 
     # "Create a repository dispatch event" REST API endpoint. 
     # 
-    - name: Create a dispatches event
+    - name: Create a workflow dispatches event
       run: |
         curl \
         -X POST \
@@ -49,13 +49,13 @@ jobs:
         https://api.github.com/repos/cma-open/cmascience/actions/workflows/after.yml/dispatches \
         -d '{"event_type":"event_type"}' 
          
-    - name: Create another dispatches event
+    - name: Create a repo level dispatches event
       run: |
         curl \
         -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
-        https://api.github.com/repos/cma-open/cmascience/actions/workflows/another.yml/dispatches \
+        https://api.github.com/repos/cma-open/cmascience/dispatches \
         -d '{"event_type":"trigger-this"}' 
  
  #curl \
