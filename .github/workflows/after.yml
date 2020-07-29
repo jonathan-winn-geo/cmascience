@@ -30,36 +30,6 @@ jobs:
     - uses: actions/checkout@v2
 
 
-# format
-# post /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
-# curl \
-#  -X POST \
-#  -H "Accept: application/vnd.github.v3+json" \
-#  https://api.github.com/repos/octocat/hello-world/actions/workflows/42/dispatches \
-#  -d '{"ref":"ref"}'
-
-    # this step 
-    - name: Check CI status
-      run: |
-        output=$(curl -sSL -X GET -G -H "Accept: application/vnd.github.v3+json" -d "branch=${{ env.GITHUB_REF_SLUG }}" -d "event=push" https://api.github.com/repos/${{ github.repository }}/actions/workflows/${{ github.event.inputs.ci }}/runs | jq -r '.workflow_runs[0] | "\(.conclusion)"')
-        echo "::set-output name=status::$output"
-      id: check
-
-    - name: Abort if CI not successful
-      if: steps.check.outputs.status != 'success'
-      run: |
-        echo ${{ steps.check.outputs.status }}
-        exit 1
-
-
-
-
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
