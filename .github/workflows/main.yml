@@ -46,7 +46,7 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/actions/workflows/after.yml/dispatches \
-        -d '{"event_type":"event_type"}' 
+        -d '{"ref":"master"}' 
          
     - name: Create a repo level dispatches event
       run: |
