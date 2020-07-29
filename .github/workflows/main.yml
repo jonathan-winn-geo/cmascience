@@ -42,13 +42,22 @@ jobs:
     # 
     - name: Create a dispatches event
       run: |
-       curl \
-         -X POST \
-         -H "Accept: application/vnd.github.v3+json" \
-         -u ${{ secrets.ACCESS_TOKEN }} \
-          https://api.github.com/repos/cma-open/cmascience/actions/workflows/after.yml/dispatches \
-         -d '{"event_type":"event_type"}' 
-        
+        curl \
+        -X POST \
+        -H "Accept: application/vnd.github.v3+json" \
+        -u ${{ secrets.ACCESS_TOKEN }} \
+        https://api.github.com/repos/cma-open/cmascience/actions/workflows/after.yml/dispatches \
+        -d '{"event_type":"event_type"}' 
+         
+    - name: Create another dispatches event
+      run: |
+        curl \
+        -X POST \
+        -H "Accept: application/vnd.github.v3+json" \
+        -u ${{ secrets.ACCESS_TOKEN }} \
+        https://api.github.com/repos/cma-open/cmascience/actions/workflows/another.yml/dispatches \
+        -d '{"event_type":"trigger-this"}' 
+ 
  #curl \
  # -X POST \
  # -H "Accept: application/vnd.github.v3+json" \
@@ -61,8 +70,3 @@ jobs:
 # -X POST 
 # -d '{"event_type": "fire-missile"}' 
 # https://api.github.com/repos/lightyears1998/test-github-actions-event-target/dispatches   
-   
-   
-   
-   
-   
