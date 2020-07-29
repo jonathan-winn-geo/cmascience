@@ -45,6 +45,7 @@ jobs:
        curl \
          -X POST \
          -H "Accept: application/vnd.github.v3+json" \
+         -u ${{ secrets.ACCESS_TOKEN }} \
           https://api.github.com/repos/cma-open/cmascience/actions/workflows/after.yml/dispatches \
          -d '{"event_type":"event_type"}' 
         
@@ -53,4 +54,15 @@ jobs:
  # -H "Accept: application/vnd.github.v3+json" \
  # https://api.github.com/repos/octocat/hello-world/actions/workflows/42/dispatches \
  # -d '{"ref":"ref"}'       
-        
+   
+# curl \
+# -u lightyears1998:$MY_GITHUB_PERSONAL_ACCESS_TOEKN_WITH_REPO_SCOPE 
+# -H "Content-Type:application/json" 
+# -X POST 
+# -d '{"event_type": "fire-missile"}' 
+# https://api.github.com/repos/lightyears1998/test-github-actions-event-target/dispatches   
+   
+   
+   
+   
+   
