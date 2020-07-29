@@ -1,14 +1,21 @@
-# This is a basic workflow to help you get started with Actions
+# testing this will run only afer main workflows has suceeded
+
+
+
 
 name: after
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Controls when the action will run. 
+# Triggers the workflow ................
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      ci:
+        description: "CI pipeline name"
+        required: false
+        default: "main.yml"
+
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,6 +28,31 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+
+
+# format
+# post /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+# curl \
+#  -X POST \
+#  -H "Accept: application/vnd.github.v3+json" \
+#  https://api.github.com/repos/octocat/hello-world/actions/workflows/42/dispatches \
+#  -d '{"ref":"ref"}'
+
+    # this step 
+    - name: Check CI status
+      run: |
+        output=$(curl -sSL -X GET -G -H "Accept: application/vnd.github.v3+json" -d "branch=${{ env.GITHUB_REF_SLUG }}" -d "event=push" https://api.github.com/repos/${{ github.repository }}/actions/workflows/${{ github.event.inputs.ci }}/runs | jq -r '.workflow_runs[0] | "\(.conclusion)"')
+        echo "::set-output name=status::$output"
+      id: check
+
+    - name: Abort if CI not successful
+      if: steps.check.outputs.status != 'success'
+      run: |
+        echo ${{ steps.check.outputs.status }}
+        exit 1
+
+
+
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
