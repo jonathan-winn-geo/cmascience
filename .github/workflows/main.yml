@@ -36,3 +36,21 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+     
+    # invoke a repository_dispatch webhook event by calling the 
+    # "Create a repository dispatch event" REST API endpoint. 
+    # 
+    - name: Create a dispatches event
+      run: |
+       curl \
+         -X POST \
+         -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/cma-open/cmascience/dispatches \
+         -d '{"event_type":"event_type"}' 
+        
+ #curl \
+ # -X POST \
+ # -H "Accept: application/vnd.github.v3+json" \
+ # https://api.github.com/repos/octocat/hello-world/actions/workflows/42/dispatches \
+ # -d '{"ref":"ref"}'       
+        
