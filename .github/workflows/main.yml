@@ -45,7 +45,7 @@ jobs:
        curl \
          -X POST \
          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/cma-open/cmascience/dispatches \
+          https://api.github.com/repos/cma-open/cmascience/actions/workflows/after.yml/dispatches \
          -d '{"event_type":"event_type"}' 
         
  #curl \
