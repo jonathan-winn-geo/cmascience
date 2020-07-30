@@ -67,7 +67,7 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/dispatches \
-        -d '{"event_type":"trigger-this"}' 
+        -d '{"event_type":"trigger-thisalt"}' 
  
  
     - name: Create a repo level dispatches event
