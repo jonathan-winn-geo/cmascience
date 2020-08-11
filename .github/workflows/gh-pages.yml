@@ -9,7 +9,7 @@
 name: gh-pages
 
 # Ensure pages only re-built after pushes to master branch not feature branches
-#on:
+on:
   push:
     branches:    
       - master
