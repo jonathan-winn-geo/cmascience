@@ -1,6 +1,13 @@
 name: docs
 
-#on: [push]
+# runs only for push to master or pull requests to master
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
