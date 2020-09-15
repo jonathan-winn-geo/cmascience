@@ -1,7 +1,10 @@
 #!/bin/bash
 
-testdir="$(dirname "$PWD")"
+testdir="$(dirname "$PWD")/tests/unit"
+echo "----------"
 echo "$testdir"
+echo "----------"
+
 
 # Discover and run tests on code path,  -v verbose flag
 #python3 -m pytest -v --capture=tee-sys  $testdir
