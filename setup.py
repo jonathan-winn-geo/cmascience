@@ -27,9 +27,13 @@ setuptools.setup(
     },
     install_requires=[
                       "cmatools @ git+https://github.com/cma-open/cmatools",
-                     # "package2 @ git+https://github.com/user2/package2@branch1",
-
                       ],
+    # this dependency_links is required for github actions tests to work, or if locally installed via
+    # python setup.py install, but is not required for pip installs
+    # link can specify version e.g. #egg=cmatools-0.0.1 or can be left as root package
+    dependency_links=["git+https://github.com/cma-open/cmatools.git#egg=cmatools"]
+    #dependency_links = ["git+https://github.com/cma-open/cmatools.git#egg=cmatools-0.0.1"]
 
+    # entry points for command line scripts
     # entry_points
 )
