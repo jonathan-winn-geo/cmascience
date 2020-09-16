@@ -3,9 +3,7 @@ import sys
 
 def test_cmatools_installed():
 
-    """
-    Test to verify that the cmatools package has been installed and can be imported
-    """
+    """    Test to verify that the cmatools package has been installed and can be imported """
 
     try:
         import cmatools
