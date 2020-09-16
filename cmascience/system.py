@@ -8,5 +8,3 @@ from cmascience.io.verify_datadir import datadir
 return_root_dir()
 datadir()
 download_input_data()
-
-

@@ -10,7 +10,8 @@ configfile = f"{ROOT_DIR}/cmascience/config.ini"
 config.read(configfile)
 root = config.get("DATADIR", "ROOT")
 
-DEBUG=False
+DEBUG = False
+
 
 def return_root_dir():
     test_dir = os.path.expanduser(root)

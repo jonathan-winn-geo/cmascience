@@ -17,11 +17,11 @@ configfile = f"{ROOT_DIR}/cmascience/config.ini"
 config.read(configfile)
 inputs = config.get("DATADIR", "INPUTS")
 root = return_root_dir()
-inputdir= f"{root}/{inputs}"
+inputdir = f"{root}/{inputs}"
 
-DEBUG=True
+DEBUG = True
 
-#CMASCIENCE = Path(__file__).resolve().parents[2]
+# CMASCIENCE = Path(__file__).resolve().parents[2]
 
 
 def download_input_data():

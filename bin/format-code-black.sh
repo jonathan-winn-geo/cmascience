@@ -1,7 +1,13 @@
 #!/bin/bash
 
 codedir="$(dirname "$PWD")"
-echo "$codedir"
+echo "-----------"
+echo "Code directory root for formatting"
+echo "$codedir" # reminder: Canonical quoting
+echo "$codedir/cmascience"
+echo "$codedir/tests"
+echo "-----------"
 
-black $codedir/cmascience
-black $codedir/tests
+# run black autoformatting against named directories
+black "$codedir/cmascience"
+black "$codedir/tests"

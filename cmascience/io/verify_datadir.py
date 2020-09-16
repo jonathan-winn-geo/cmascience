@@ -9,9 +9,10 @@ configfile = f"{ROOT_DIR}/cmascience/config.ini"
 config.read(configfile)
 inputs = config.get("DATADIR", "INPUTS")
 root_dir = return_root_dir()
-inputdir= Path(root_dir)/inputs
+inputdir = Path(root_dir) / inputs
 
 DEBUG = True
+
 
 def datadir():
     indir = inputdir.mkdir(parents=True, exist_ok=True)
