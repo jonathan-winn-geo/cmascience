@@ -6,9 +6,10 @@ def test_cmatools_installed():
 
     try:
         import cmatools
-        print(f'cmatools version: {cmatools.__version__}')
+
+        print(f"cmatools version: {cmatools.__version__}")
     except ImportError as e:
-        print('cmatools was not available for import')
+        print("cmatools was not available for import")
         print(e)
-        print('Try re-installing the system, ensure cmatools package is available')
-    assert ('cmatools' in sys.modules) is True
+        print("Try re-installing the system, ensure cmatools package is available")
+    assert ("cmatools" in sys.modules) is True
