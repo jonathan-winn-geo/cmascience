@@ -25,7 +25,9 @@ jobs:
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
-        https://api.github.com/repos/cma-open/cmascience/releases/new?tag=vTEST.0.0.1
+        https://api.github.com/repos/cma-open/cmascience/releases \
+        -d '{"tag_name":"tag_name"}' 
+        #https://api.github.com/repos/cma-open/cmascience/releases/new?tag=vTEST.0.0.1
         #https://api.github.com/repos/cma-open/cmascience/dispatches \
         #-d '{"event_type":"trigger-other"}'
 
