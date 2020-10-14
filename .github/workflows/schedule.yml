@@ -1,6 +1,8 @@
 # example schedule release
+# using calver https://calver.org/calendar_versioning.html
+# calver YYYY.0M.0D.MICRO
 
-name: Scheduled monthly deploy release
+name: Scheduled  automated release
 
 on:
   #push:
@@ -24,15 +26,18 @@ jobs:
         #repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d-T-%H-%M')"
+      run: echo "::set-output name=date::$(date +'%Y.%m.%d.T%H%M.Dev')"
+      #run: echo "::set-output name=date::$(date +'%Y.%m.%d.Dev')"
+
     - name: Create a repo level release event
       run: |
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d '{"tag_name":"vTest.${{ steps.date.outputs.date }}"}' 
+        -d '{"tag_name":"${{ steps.date.outputs.date }}"}' 
         #-d '{"name":"test_name"}'
+        #-d '{"prerelease":"true"}'
          
        
 
