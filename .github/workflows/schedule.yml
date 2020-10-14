@@ -31,8 +31,8 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d '{"tag_name":"vTest.${{ steps.date.outputs.date }}"}' \
-        -d '{"name":"test_name"}'
+        -d '{"tag_name":"vTest.${{ steps.date.outputs.date }}"}' 
+        #-d '{"name":"test_name"}'
          
        
 
