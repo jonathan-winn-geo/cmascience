@@ -7,30 +7,32 @@ on:
     #branches:
     #  - master
   schedule:
-    - cron: "*/5 * * * *" # Every 10 mins
+    - cron: '*/3 * * * *' # every 3 mins
+    #- cron: "*/5 * * * *" # Every 10 mins
     #- cron: '24 */24 * * *'  # Once a day
-    #- cron: # Once per month
+    #- cron: '0 0 * * *' # Once a day
+    #- cron: '0 0 1 * *' # Once per month
+    #- cron: '0 0 1 */2 *' # Every other month (1st day of month)
     #- cron: # Once per quarter
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    #- uses: actions/checkout@v1
         #with:
         #repo-token: ${{ secrets.GITHUB_TOKEN }}
-
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d-T-%H-%M')"
     - name: Create a repo level release event
       run: |
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d '{"tag_name":"tag_name"}' 
-        #https://api.github.com/repos/cma-open/cmascience/releases/new?tag=vTEST.0.0.1
-        #https://api.github.com/repos/cma-open/cmascience/dispatches \
-        #-d '{"event_type":"trigger-other"}'
-
-          #https://github.com/octo-org/octo-repo/releases/new?tag=v1.0.1
-          #https://github.com/octo-org/octo-repo/releases/new?tag=v1.0.1
+        -d '{"tag_name":"vTest.${{ steps.date.outputs.date }}"}' \
+        -d '{"name":"test_name"}'
+         
+       
 
