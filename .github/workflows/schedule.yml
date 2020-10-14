@@ -7,10 +7,10 @@ on:
     #branches:
     #  - master
   schedule:
-    - cron: '*/3 * * * *' # every 3 mins
+    #- cron: '*/3 * * * *' # every 3 mins
     #- cron: "*/5 * * * *" # Every 10 mins
     #- cron: '24 */24 * * *'  # Once a day
-    #- cron: '0 0 * * *' # Once a day
+    - cron: '0 0 * * *' # Once a day
     #- cron: '0 0 1 * *' # Once per month
     #- cron: '0 0 1 */2 *' # Every other month (1st day of month)
     #- cron: # Once per quarter
