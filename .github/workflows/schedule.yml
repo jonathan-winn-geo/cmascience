@@ -20,16 +20,24 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y.%m.%d.T%H%M.Dev')"
       #run: echo "::set-output name=date::$(date +'%Y.%m.%d.Dev')"
-    - name: Get release notes
-      id: notes
-      run: echo "::set-output name=body::'Release notes text here'"
+ #   - name: Get release notes
+ #     id: notes
+ #     run: echo "::set-output name=body::'Release notes text here'"
+    - name: Get release
+      id: release
+      run: echo ::set-output name=release::$(cat RELEASE)
+    - name: Get version
+      id: vars
+      run: echo ::set-output name=version::$(cat VERSION)
+    - name: Test output
+      run: echo ${{ steps.vars.outputs.version }}
     - name: Create a repo level release event
       run: |
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d '{"tag_name":"v${{ steps.date.outputs.date }}","prerelease":"true",  "body": "${{ steps.notes.outputs.body }}" }' 
+        -d '{"tag_name":"v${{ steps.date.outputs.date }}","prerelease":"true",  "body": "${{ steps.release.outputs.release }}" }' 
         #-d '{"name":"test_name"}'
         #-d '{"prerelease":"true"}'
          
