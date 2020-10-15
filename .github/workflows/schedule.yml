@@ -2,6 +2,8 @@
 # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#create-a-release
 # using calver https://calver.org/calendar_versioning.html
 # calver YYYY.0M.0D.MICRO
+# using semver https://semver.org/
+# semver MAJOR.MINOR.PATCH.pre-release
 
 name: Scheduled  automated release
 
@@ -40,7 +42,7 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d '{"tag_name":"v{{ steps.vars.outputs.version }}.Dev.${{ steps.date.outputs.date }}","prerelease": true,  "body": "${{ steps.release.outputs.release }}" }' 
+        -d '{"tag_name":"v{{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}","prerelease": true,  "body": "${{ steps.release.outputs.release }}" }' 
         #-d '{"name":"test_name"}'
         #-d '{"prerelease":"true"}'
          
