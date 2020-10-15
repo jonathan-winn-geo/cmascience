@@ -9,10 +9,10 @@ on:
     #branches:
     #  - master
   schedule:
-    #- cron: '*/3 * * * *' # every 3 mins
+    - cron: '*/3 * * * *' # every 3 mins
     #- cron: "*/5 * * * *" # Every 10 mins
     #- cron: '24 */24 * * *'  # Once a day
-    - cron: '0 0 * * *' # Once a day
+    #- cron: '0 0 * * *' # Once a day
     #- cron: '0 0 1 * *' # Once per month
     #- cron: '0 0 1 */2 *' # Every other month (1st day of month)
     #- cron: # Once per quarter
@@ -35,7 +35,7 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d '{"tag_name":"${{ steps.date.outputs.date }}"}' 
+        -d '{"tag_name":"v${{ steps.date.outputs.date }}","prerelease":"true"  }' 
         #-d '{"name":"test_name"}'
         #-d '{"prerelease":"true"}'
          
