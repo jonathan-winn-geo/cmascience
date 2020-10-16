@@ -51,6 +51,7 @@ jobs:
       run: | 
         echo "$TAG"
         echo "{$TAG}"
+        echo "{{$TAG}}"
         echo '{$TAG}'
         #echo '{'"$TAG"'}'
         #echo '{'"'$TAG'"'}'
