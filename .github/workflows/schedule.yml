@@ -53,6 +53,7 @@ jobs:
         echo "{$TAG}"
         echo "{{$TAG}}"
         echo '{'"$TAG"'}'
+        echo "{"\""$TAG"\""}"
         echo '{$TAG}'
         echo '{"$TAG"}'
         echo "$TAG2"
