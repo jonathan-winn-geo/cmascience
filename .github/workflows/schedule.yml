@@ -60,6 +60,7 @@ jobs:
         #echo "$TAG2"
         echo "--------------------"
         var=$(echo $'\''{"$TAG"}$'\'')
+        echo "$var"
  
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
