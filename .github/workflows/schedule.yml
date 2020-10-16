@@ -41,9 +41,11 @@ jobs:
     - name: Create a repo level release event
       env:
         DATA: '"tag_name":"test"'
+        DATA_CONTEXT: ${{ toJson(job) }}
         RELEASE: '"prerelease": true'
         #DATA:  ["tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"]
-      run: |      
+      run: |  
+        echo "$DATA_CONTEXT"    
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
