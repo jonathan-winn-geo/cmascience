@@ -51,11 +51,12 @@ jobs:
         DATABODY2: '{$RELEASE "," $TAG}'
         #DATA:  ["tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"]
       run: |  
-        echo "$DATA"    
+        echo $DATA    
         echo "$TAG"
+        echo $DATA_BODY
         echo "$DATA_BODY"
         echo "$DATABODY2"
-        echo $DATABODY
+        echo $DATABODY2
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
