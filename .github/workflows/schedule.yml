@@ -45,7 +45,6 @@ jobs:
       env:
         DATA: '"tag_name":"test"'
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}"'
-        #DATA_CONTEXT: ${{ toJson(${{ DATA }}) }}
         RELEASE: '"prerelease": true'
         D2: ${{ env.RELEASE }} 
         DATA_BODY: '$RELEASE "," $TAG'
@@ -56,10 +55,9 @@ jobs:
         echo $D2
         echo "$D2"
         echo "$TAG"
-        echo $DATA_BODY
-        echo "$DATA_BODY"
-        echo "$DATABODY2"
-        echo $DATABODY2
+        echo ""$TAG","$RELEASE""
+        echo "$TAG","$RELEASE"
+ 
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
