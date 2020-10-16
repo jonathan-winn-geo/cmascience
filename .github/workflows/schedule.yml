@@ -46,13 +46,8 @@ jobs:
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}"'
         RELEASE: '"prerelease": true'
         BODY: '"body":"${{ steps.release.outputs.release }}"'
-        DATA_BODY: '$RELEASE "," $TAG'
-        DATABODY2: '{$RELEASE "," $TAG}'
-        #DATA:  ["tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"]
-      run: |  
-        echo $DATA    
-        echo $D2
-        echo "$D2"
+        #DATA: "tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"      
+      run: | 
         echo "$TAG"
         echo ""$TAG","$RELEASE""
         echo "$TAG","$RELEASE"
@@ -62,7 +57,7 @@ jobs:
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
         #-d '{$TAG}'
-        -d '[{"$TAG"}]'
+        -d '{"'"$TAG"'"}'
         
         #-d '{"name":"test_name"}'
 
