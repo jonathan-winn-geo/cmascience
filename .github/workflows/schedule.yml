@@ -47,7 +47,7 @@ jobs:
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}"'
         #DATA_CONTEXT: ${{ toJson(${{ DATA }}) }}
         RELEASE: '"prerelease": true'
-        D2: ${{ RELEASE }} 
+        D2: ${{ env.RELEASE }} 
         DATA_BODY: '$RELEASE "," $TAG'
         DATABODY2: '{$RELEASE "," $TAG}'
         #DATA:  ["tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"]
