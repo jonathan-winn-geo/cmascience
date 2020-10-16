@@ -50,6 +50,7 @@ jobs:
         #DATA: "tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"      
       run: | 
         echo "$TAG"
+        echo '{""'"$TAG"'"}'
         echo "$TAG2"
         echo "{"$TAG2"}"
         echo "$TAG""
@@ -61,7 +62,7 @@ jobs:
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
         #-d '{$TAG}'
-        -d "{"$TAG2"}"
+        -d '{""'"$TAG"'"}'
         
         #-d '{"name":"test_name"}'
 
