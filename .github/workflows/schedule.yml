@@ -45,6 +45,7 @@ jobs:
       env:
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}"'
         RELEASE: '"prerelease": true'
+        BODY: '"body":"${{ steps.release.outputs.release }}"'
         DATA_BODY: '$RELEASE "," $TAG'
         DATABODY2: '{$RELEASE "," $TAG}'
         #DATA:  ["tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"]
@@ -61,7 +62,7 @@ jobs:
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
         #-d '{$TAG}'
-        -d '{echo "$TAG"}'
+        -d '{$TAG}'
         
         #-d '{"name":"test_name"}'
 
