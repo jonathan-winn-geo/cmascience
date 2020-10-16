@@ -39,18 +39,14 @@ jobs:
     - name: Test output
       run: echo ${{ steps.vars.outputs.version }}
     - name: Create a repo level release event
-      run: |
-        data='{ 
-        "tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}",
-        "prerelease": true,
-        "body": "${{ steps.release.outputs.release }}" 
-        }' 
-        
+      env:
+        DATA:  '{"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body": "${{ steps.release.outputs.release }}" }'
+      run: |      
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d "$(data)"
+        -d $DATA
         #-d "$(echo $data)"
         
         #-d '{"name":"test_name"}'
