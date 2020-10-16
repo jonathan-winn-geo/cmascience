@@ -8,6 +8,7 @@
 name: Scheduled  automated release
 
 on:
+  # Enable active on push for testing only
   push:
   schedule:
     - cron: "* * * * *" # Run every minute, e.g. for testing only
@@ -26,15 +27,19 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y.%m.%d.%Hh%Mm')"
     - name: Get release notes
+      # Takes release notes text from a named file in the main repo
       id: notes
       run: echo ::set-output name=notes::$(cat RELEASE-NOTES)
     - name: Get version
+      # Takes current version number from a named file in the main repo
       id: vars
       run: echo ::set-output name=version::$(cat VERSION)
     - name: Get body data
+      # Creates json format content to pass to curl request to the github API
       id: body
-      # Escape chars used to format output as required for curl data body
-        # Better to format this way as difficult to pass indiv env vars to curl
+      # Escape chars used to format output as required for curl data body (single quotes around double quotes)
+      # Normal use of single quotes prevents expansion of named variables
+      # Better to format this way as difficult to pass indiv env vars to curl
       run: echo ::set-output name=body::$(echo $'\''{"$TAG", "$PRERELEASE", "$NOTES"}$'\'')
       env:
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}"'
