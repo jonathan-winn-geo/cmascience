@@ -53,7 +53,9 @@ jobs:
         echo '{""'"$TAG"'"}'
         echo "$TAG2"
         echo "{"$TAG2"}"
-        echo "$TAG""
+        echo "$TAG"
+        echo "-------------------"
+        echo ""$TAG""
         echo ""$TAG","$RELEASE""
         echo "$TAG","$RELEASE"
  
