@@ -50,6 +50,7 @@ jobs:
         #DATA: "tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"      
       run: | 
         echo "$TAG"
+        echo '\''{"$TAG"}'\''
         echo "{$TAG}"
         echo "{{$TAG}}"
         echo '{'"$TAG"'}'
