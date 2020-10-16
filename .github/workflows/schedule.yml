@@ -35,6 +35,8 @@ jobs:
     - name: Get body data
       id: body
       run: echo ::set-output name=body::$($'\''{"$TAG"}$'\'')
+      env:
+        TAG: '"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}"'
     - name: Test output
       run: | 
         echo ${{ steps.vars.outputs.version }}
