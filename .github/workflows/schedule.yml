@@ -62,7 +62,7 @@ jobs:
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
         #-d '{$TAG}'
-        -d {"$TAG"}
+        -d '{""$TAG""}'
         
         #-d '{"name":"test_name"}'
 
