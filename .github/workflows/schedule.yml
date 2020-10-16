@@ -32,11 +32,15 @@ jobs:
     - name: Get version
       id: vars
       run: echo ::set-output name=version::$(cat VERSION)
+    - name: Get body data
+      id: body
+      run: echo ::set-output name=body::$(echo $'\''{"$TAG"}$'\'')
     - name: Test output
       run: | 
         echo ${{ steps.vars.outputs.version }}
         echo ${{ steps.release.outputs.release }}
         echo ${{ steps.date.outputs.date }}
+        echo ${{ steps.body.outputs.body }}
     - name: Create a repo level release event
       env:
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}"'
@@ -52,7 +56,8 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d "$var"
+        -d  ${{ steps.body.outputs.body }}
+        #-d "$var"
         #-d '{"tag_name":"test_name3dghh"}'
         #-d "$var"
 
