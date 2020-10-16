@@ -49,15 +49,6 @@ jobs:
         BODY: '"body":"${{ steps.release.outputs.release }}"'
         #DATA: "tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body":"${{ steps.release.outputs.release }}"      
       run: | 
-        echo "$TAG"
-        echo $'\''{"$TAG"}$'\''
-        #echo "{$TAG}"
-        #echo "{{$TAG}}"
-        #echo '{'"$TAG"'}'
-        #echo "{"\""$TAG"\""}"
-        #echo '{$TAG}'
-        #echo '{"$TAG"}'
-        #echo "$TAG2"
         echo "--------------------"
         var=$(echo $'\''{"$TAG"}$'\'')
         echo "$var"
@@ -66,9 +57,9 @@ jobs:
         -H "Accept: application/vnd.github.v3+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
         https://api.github.com/repos/cma-open/cmascience/releases \
-        -d "$var"
+        #-d "$var"
         #-d "{"\""$TAG"\""}"
-        #-d '{"name":"test_name"}'
+        -d '{"name":"test_name"}'
 
        
 
