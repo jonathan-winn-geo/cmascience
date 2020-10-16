@@ -40,7 +40,8 @@ jobs:
       run: echo ${{ steps.vars.outputs.version }}
     - name: Create a repo level release event
       env:
-        DATA:  '{"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body": "${{ steps.release.outputs.release }}" }'
+        DATA: '"prerelease":true'
+        #DATA:  '{"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}", "prerelease": true, "body": "${{ steps.release.outputs.release }}" }'
       run: |      
         curl -X POST \
         -H "Accept: application/vnd.github.v3+json" \
