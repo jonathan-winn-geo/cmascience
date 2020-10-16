@@ -8,12 +8,11 @@
 name: Scheduled  automated release
 
 on:
-  # Enable active on push for testing only
-  push:
+  #push: # Enable active on push for testing only
   schedule:
-    - cron: "* * * * *" # Run every minute, e.g. for testing only
+    #- cron: "* * * * *" # Run every minute, e.g. for testing only
     #- cron: "0 * * * *" # Every hour
-    #- cron: '0 0 * * *' # Once a day
+    - cron: '0 0 * * *' # Once a day
     #- cron: '0 0 1 * *' # Once per month
     #- cron: '0 0 1 */2 *' # Every other month (1st day of month)
 
@@ -45,7 +44,7 @@ jobs:
         TAG: '"tag_name":"v${{ steps.vars.outputs.version }}.rc-${{ steps.date.outputs.date }}"'
         PRERELEASE: '"prerelease": true'
         NOTES: '"body":"${{ steps.notes.outputs.notes }}"'
-    - name: Test output
+    - name: Test the job steps outputs
       run: | 
         echo ${{ steps.vars.outputs.version }}
         echo ${{ steps.notes.outputs.notes }}
