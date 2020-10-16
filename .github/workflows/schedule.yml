@@ -34,7 +34,7 @@ jobs:
       run: echo ::set-output name=version::$(cat VERSION)
     - name: Get body data
       id: body
-      run: echo ::set-output name=body::$(echo $'\''{"$TAG"}$'\'')
+      run: echo ::set-output name=body::$($'\''{"$TAG"}$'\'')
     - name: Test output
       run: | 
         echo ${{ steps.vars.outputs.version }}
