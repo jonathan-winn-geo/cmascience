@@ -12,8 +12,8 @@ on:
   schedule:
     #- cron: "* * * * *" # Run every minute, e.g. for testing only
     #- cron: "0 * * * *" # Every hour
-    - cron: '0 0 * * *' # Once a day
-    #- cron: '0 0 1 * *' # Once per month
+    #- cron: '0 0 * * *' # Once a day
+    - cron: '0 0 1 * *' # Once per month
     #- cron: '0 0 1 */2 *' # Every other month (1st day of month)
 
 jobs:
@@ -24,7 +24,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y.%m.%d.%Hh%Mm')"
+      #run: echo "::set-output name=date::$(date +'%Y.%m.%d.%Hh%Mm')"
+      run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
     - name: Get release notes
       # Takes release notes text from a named file in the main repo
       id: notes
