@@ -1,0 +1,12 @@
+name:
+  hadsst4
+category:
+  marine
+CF:
+  1.7
+format:
+  netcdf
+files:
+  1000
+volume:
+  1GB

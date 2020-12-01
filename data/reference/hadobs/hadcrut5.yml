@@ -1,0 +1,12 @@
+name:
+  hadcrut5
+category:
+  blended
+CF:
+  1.7
+format:
+  netcdf
+files:
+  2000
+volume:
+  12GB

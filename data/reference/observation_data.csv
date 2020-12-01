@@ -1,0 +1,9 @@
+dataset,latest,category,format
+HadISST,1.1,marine,netcdf
+HadSST3,3.1.1.0,marine,netcdf
+HadSST4,4.0.0.0,marine,netcdf
+HadNMAT2,2.0.1.0,marine,netcdf
+EN4,4.2.1,marine,zip
+HadCRUT4,4.6.0.0,blended,netcdf
+HadCRUH,1,blended,netcdf
+data8,1,land,txt
